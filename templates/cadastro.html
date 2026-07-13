@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cadastro — Tsuzuku</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+
+.cadastro-container{
+    display:flex;
+    min-height:100vh;
+}
+
+.cadastro-left{
+    width:45%;
+    background:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+}
+
+.cadastro-content{
+    width:100%;
+    max-width:450px;
+}
+
+.cadastro-logo{
+    font-size:52px;
+    color:#1bbf7c;
+    margin-bottom:10px;
+}
+
+.cadastro-title{
+    font-size:38px;
+    color:#173321;
+    margin-bottom:10px;
+}
+
+.cadastro-subtitle{
+    color:#70857a;
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+.cadastro-form{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.cadastro-form label{
+    font-weight:600;
+    color:#214232;
+}
+
+.cadastro-form input{
+    padding:15px;
+    border-radius:14px;
+    border:1px solid #d6e1da;
+    outline:none;
+    transition:.2s;
+    font-size:15px;
+}
+
+.cadastro-form input:focus{
+    border-color:#1bbf7c;
+    box-shadow:0 0 0 4px rgba(27,191,124,.10);
+}
+
+.cadastro-btn{
+    margin-top:10px;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#1b6d45;
+    color:#fff;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+    box-shadow:0 10px 24px rgba(27,109,69,.18);
+}
+
+.cadastro-btn:hover{
+    transform:translateY(-2px);
+    background:#155635;
+}
+
+.login-link{
+    margin-top:22px;
+    color:#6d8176;
+}
+
+.login-link a{
+    color:#1b6d45;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.cadastro-right{
+    flex:1;
+    background:#f4f7f5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+}
+
+.info-card{
+    max-width:500px;
+    background:#ffffff;
+    padding:40px;
+    border-radius:28px;
+    border:1px solid #dfe8e2;
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
+}
+
+.info-card h2{
+    color:#163c28;
+    font-size:36px;
+    margin-bottom:18px;
+}
+
+.info-card p{
+    color:#698075;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.feature-list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.feature-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-radius:14px;
+    background:#f8fbf9;
+    border:1px solid #ebf1ed;
+}
+
+.feature-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#1bbf7c;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+@media(max-width:900px){
+
+    .cadastro-container{
+        flex-direction:column;
+    }
+
+    .cadastro-left{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body class="page fade-in">
+
+<div class="cadastro-container">
+
+    <div class="cadastro-left">
+
+        <div class="cadastro-content">
+
+            <div class="cadastro-logo">続</div>
+
+            <h1 class="cadastro-title">
+                Criar conta
+                    {% if erro %}
+                    <p class="erro">{{ erro }}</p>
+                    {% endif %}
+
+                    {% if sucesso %}
+                    <p class="sucesso">{{ sucesso }}</p>
+                    {% endif %}
+            </h1>
+
+            <p class="cadastro-subtitle">
+                Comece a organizar seu histórico clínico
+                de forma inteligente e segura.
+            </p>
+
+            <form class="cadastro-form" method="POST">
+
+                <label>Nome completo</label>
+                <input type="text"
+                       name="nome"
+                       placeholder="Digite seu nome">
+
+                <label>Email</label>
+                <input type="email"
+                       name="email"
+                       placeholder="Digite seu email">
+
+                <label>Senha</label>
+                <input type="password"
+                       name="senha"
+                       placeholder="Crie uma senha">
+
+                <label>Confirmar senha</label>
+                <input type="password"
+                       name="confirmar"
+                       placeholder="Repita sua senha">
+
+                <button class="cadastro-btn" type="submit">
+                    Criar conta
+                </button>
+
+            </form>
+
+            <p class="login-link">
+                Já possui uma conta?
+                <a href="{{ url_for('login') }}">
+                    Entrar
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="cadastro-right">
+
+        <div class="info-card">
+
+            <h2>
+                Plataforma clínica moderna
+            </h2>
+
+            <p>
+                O Tsuzuku ajuda pacientes a organizarem
+                sintomas, dispositivos médicos e
+                histórico clínico em um único lugar.
+            </p>
+
+            <div class="feature-list">
+
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    Histórico clínico estruturado
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    Interface intuitiva
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    Organização inteligente
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

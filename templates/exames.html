@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Exames e Laudos</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="dashboard-body">
+
+{% include 'components/sidebar.html' %}
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+
+    <div class="dashboard-header">
+
+        <div class="dashboard-brand">
+
+            <h1>
+                Exames e Laudos
+            </h1>
+
+            <p>
+                Envie PDFs, imagens e exames médicos.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- LAYOUT PRINCIPAL -->
+
+    <div class="exams-main-layout">
+
+        <!-- ESQUERDA -->
+
+        <div class="exams-left">
+
+            <!-- UPLOAD -->
+
+            <div class="exam-upload-card">
+
+                <h2>
+                    Upload de Exames
+                </h2>
+
+                <p>
+                    Selecione um arquivo médico
+                    para anexar ao prontuário.
+                </p>
+
+                <form method="POST"
+                      enctype="multipart/form-data">
+
+                    <div class="exam-sections">
+
+                        <!-- PDFs -->
+
+                        <div class="exam-section">
+
+                            <h3>
+                                📄 Laudos e PDFs
+                            </h3>
+
+                            <label class="upload-box">
+
+                                <input type="file"
+                                       name="arquivo_pdf"
+                                       class="file-hidden">
+
+                                <div class="upload-content">
+
+                                    <div class="upload-icon">
+                                        📄
+                                    </div>
+
+                                    <p>
+                                        Relatórios médicos,
+                                        laudos e documentos PDF.
+                                    </p>
+
+                                </div>
+
+                            </label>
+
+                        </div>
+
+                        <!-- IMAGENS -->
+
+                        <div class="exam-section">
+
+                            <h3>
+                                🩻 Radiografias e Imagens
+                            </h3>
+
+                            <label class="upload-box">
+
+                                <input type="file"
+                                       name="arquivo_imagem"
+                                       class="file-hidden"
+                                       accept="image/*">
+
+                                <div class="upload-content">
+
+                                    <div class="upload-icon">
+                                        🩻
+                                    </div>
+
+                                    <p>
+                                        Raios-X, tomografias
+                                        e imagens clínicas.
+                                    </p>
+
+                                </div>
+
+                            </label>
+
+                        </div>
+
+                        <!-- LAB -->
+
+                        <div class="exam-section">
+
+                            <h3>
+                                🧪 Exames Laboratoriais
+                            </h3>
+
+                            <label class="upload-box">
+
+                                <input type="file"
+                                       name="arquivo_lab"
+                                       class="file-hidden">
+
+                                <div class="upload-content">
+
+                                    <div class="upload-icon">
+                                        🧪
+                                    </div>
+
+                                    <p>
+                                        Sangue, urina
+                                        e exames clínicos.
+                                    </p>
+
+                                </div>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <button type="submit"
+                            class="hero-btn">
+
+                        Enviar Arquivos
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        <!-- CENTRO -->
+
+        
+
+            <div class="uploaded-exams">
+
+                <h2>
+                    Arquivos Enviados
+                </h2>
+
+                <!-- PDFs -->
+
+                <div class="exam-category">
+
+                    <h2>
+                        📄 Laudos e PDFs
+                    </h2>
+
+                    <div class="exam-grid">
+
+                        {% for exame in pdfs %}
+
+                        <div class="exam-item">
+
+                            <div class="exam-preview">
+
+                                <div class="exam-item-icon">
+                                    📄
+                                </div>
+
+                            </div>
+
+                            <div class="exam-item-info">
+
+                                <h3>
+                                    {{ exame.nome_arquivo }}
+                                </h3>
+
+                                <p>
+                                    {{ exame.tipo_arquivo }}
+                                </p>
+
+                            </div>
+
+                            <a href="{{ url_for('abrir_exame',
+                                                nome_arquivo=exame.nome_arquivo) }}"
+                               target="_blank"
+                               class="open-exam-btn">
+
+                                Abrir
+
+                            </a>
+
+                            <a href="{{ url_for('excluir_exame_route',
+                                                id_exame=exame.id) }}"
+                               class="delete-exam-btn">
+
+                                🗑
+
+                            </a>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <!-- IMAGENS -->
+
+                <div class="exam-category">
+
+                    <h2>
+                        🩻 Radiografias e Imagens
+                    </h2>
+
+                    <div class="exam-grid">
+
+                        {% for exame in imagens %}
+
+                        <div class="exam-item">
+
+                            <div class="exam-preview">
+
+                                <img src="{{ url_for('abrir_exame',
+                                                     nome_arquivo=exame.nome_arquivo) }}"
+                                     class="exam-preview-image">
+
+                            </div>
+
+                            <div class="exam-item-info">
+
+                                <h3>
+                                    {{ exame.nome_arquivo }}
+                                </h3>
+
+                                <p>
+                                    {{ exame.tipo_arquivo }}
+                                </p>
+
+                            </div>
+
+                            <a href="{{ url_for('abrir_exame',
+                                                nome_arquivo=exame.nome_arquivo) }}"
+                               target="_blank"
+                               class="open-exam-btn">
+
+                                Abrir
+
+                            </a>
+
+                            <a href="{{ url_for('excluir_exame_route',
+                                                id_exame=exame.id) }}"
+                               class="delete-exam-btn">
+
+                                🗑
+
+                            </a>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <!-- LAB -->
+
+                <div class="exam-category">
+
+                    <h2>
+                        🧪 Exames Laboratoriais
+                    </h2>
+
+                    <div class="exam-grid">
+
+                        {% for exame in laboratoriais %}
+
+                        <div class="exam-item">
+
+                            <div class="exam-preview">
+
+                                <div class="exam-item-icon">
+                                    🧪
+                                </div>
+
+                            </div>
+
+                            <div class="exam-item-info">
+
+                                <h3>
+                                    {{ exame.nome_arquivo }}
+                                </h3>
+
+                                <p>
+                                    {{ exame.tipo_arquivo }}
+                                </p>
+
+                            </div>
+
+                            <a href="{{ url_for('abrir_exame',
+                                                nome_arquivo=exame.nome_arquivo) }}"
+                               target="_blank"
+                               class="open-exam-btn">
+
+                                Abrir
+
+                            </a>
+
+                            <a href="{{ url_for('excluir_exame_route',
+                                                id_exame=exame.id) }}"
+                               class="delete-exam-btn">
+
+                                🗑
+
+                            </a>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        
+
+        <!-- DIREITA -->
+
+        <div class="exam-side-panel">
+
+            <!-- ESTATÍSTICAS -->
+
+            <div class="side-card">
+
+                <h3>
+                    📊 Estatísticas
+                </h3>
+
+                <div class="stat-item">
+
+                    <span>Total PDFs</span>
+
+                    <strong>
+                        {{ pdfs|length }}
+                    </strong>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <span>Radiografias</span>
+
+                    <strong>
+                        {{ imagens|length }}
+                    </strong>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <span>Laboratoriais</span>
+
+                    <strong>
+                        {{ laboratoriais|length }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- STATUS -->
+
+            <div class="side-card">
+
+                <h3>
+                    🩺 Status Clínico
+                </h3>
+
+                <p>
+                    Prontuário sincronizado.
+                </p>
+
+                <p>
+                    Uploads organizados.
+                </p>
+
+                <p>
+                    Central médica ativa.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

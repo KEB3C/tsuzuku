@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Tsuzuku — História Clínica</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="page fade-in">
+
+<div class="split-container">
+
+    <div class="left-panel">
+        <div class="hero">
+            <div class="kanji">続</div>
+
+            <h1>Sua história clínica,<br>
+                em uma linha do tempo clara.</h1>
+
+            <p class="subtitle">Feito para quem vive com dor crônica.</p>
+
+            <a class="cta" href="{{ url_for('login') }}">
+                Criar meu resumo clínico
+            </a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="right-panel">
+        <img class="hero-img"
+             src="{{ url_for('static', filename='img/login-plant.jpg') }}"
+             alt="Imagem">
+    </div>
+
+</div>
+
+</body>
+</html>

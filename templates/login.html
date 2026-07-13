@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Login — Tsuzuku</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="page fade-in">
+
+<div class="login-container">
+
+    <div class="login-left">
+        <h2>Bem vindo de volta!</h2>
+        <p>Adicione suas informações para acessar a sua conta</p>
+
+        {% if erro %}
+        <p class="erro">{{ erro }}</p>
+        {% endif %}
+
+        <form method="post" class="login-form">
+
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Enter your email">
+
+            <label>Senha</label>
+            <input type="password" name="senha" placeholder="Enter your password">
+
+            <button class="btn-login" type="submit">Login</button>
+
+            <div class="social-row">
+                <button class="btn-alt" type="button">Entrar com Google</button>
+                <button class="btn-alt" type="button">Entrar com Apple</button>
+            </div>
+
+        </form>
+
+        <p>Não tem uma conta? <a href="{{ url_for('cadastro') }}">
+    Cadastrar-se
+</a></p>
+    </div>
+
+    <div class="login-right">
+        <img class="login-img"
+             src="{{ url_for('static', filename='img/login-plant.jpg') }}">
+    </div>
+
+</div>
+
+</body>
+</html>

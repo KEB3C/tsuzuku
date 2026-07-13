@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Importar QR Code</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="dashboard-body">
+
+{% include 'components/sidebar.html' %}
+
+<!-- CONTEÚDO -->
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+
+        <div class="dashboard-brand">
+
+            <h1>Importar Histórico Clínico</h1>
+
+            <p>
+                Escaneie um QR Code médico
+                para importar informações.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="qr-page">
+
+        <div class="qr-card">
+
+            <h2>Scanner QR Code</h2>
+
+            <p>
+                Posicione o QR Code dentro
+                da área abaixo.
+            </p>
+
+            <div id="reader"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+<script>
+
+async function onScanSuccess(decodedText){
+
+    try{
+
+        const dados = JSON.parse(decodedText)
+
+        const response = await fetch("/importar_qr", {
+
+            method:"POST",
+
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify(dados)
+
+        })
+
+        const resultado = await response.json()
+
+        if(resultado.sucesso){
+
+            alert("Histórico importado com sucesso!")
+
+        }
+
+    }catch(error){
+
+        alert("QR inválido!")
+
+        console.log(error)
+    }
+}
+
+const html5QrcodeScanner = new Html5QrcodeScanner(
+    "reader",
+    {
+        fps:10,
+        qrbox:250
+    }
+)
+
+html5QrcodeScanner.render(onScanSuccess)
+
+</script>
+
+</body>
+</html>

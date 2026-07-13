@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Contexto Clínico</title>
+
+<link rel="stylesheet" 
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.page-container{
+    max-width:900px;
+    margin:40px auto;
+    padding:25px;
+    background:#f6faf7;
+    border-radius:16px;
+    border:1px solid #cde8d8;
+}
+h2{
+    color:#134e38;
+}
+.section{
+    margin-top:18px;
+}
+select, input{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #c8d9cc;
+}
+.row{
+    display:flex;
+    gap:10px;
+}
+.row > div{
+    flex:1;
+}
+button{
+    margin-top:20px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#2f6a39;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body class="page fade-in">
+
+    <div class="page-container">
+    
+    <div class="top-bar">
+
+    <div>
+        <h1 class="logo-title">Tsuzuku</h1>
+        <p class="logo-subtitle">
+            Histórico Clínico Inteligente
+        </p>
+    </div>
+
+    <a href="{{ url_for('logout') }}" class="logout-btn">
+        Encerrar sessão
+    </a>
+
+</div>
+
+<div class="context-header">
+
+    <div>
+        <p class="step-label">Etapa 1 de 2</p>
+
+        <h2>
+            Estas informações ajudam a
+            enquadrar seu caso clínico.
+        </h2>
+
+        <p class="context-description">
+            Suas respostas ajudam a construir um
+            histórico clínico mais preciso e organizado.
+        </p>
+    </div>
+
+    <div class="progress-circle">
+        50%
+    </div>
+
+</div>
+
+<form method="POST">
+
+<!-- DISPOSITIVO MÉDICO -->
+<div class="section">
+    <label><b>Você convive com</b></label>
+
+    <div class="row">
+        <!-- SELECT 1 -->
+        <div>
+            <select id="dispositivo" name="dispositivo" required>
+                <option value="">Selecione um dispositivo médico</option>
+
+                <option value="pino">Pino / Parafuso ortopédico</option>
+                <option value="placa_ossea">Placa óssea</option>
+                <option value="protese_articular">Prótese articular</option>
+                <option value="cateter_venoso">Cateter venoso</option>
+                <option value="cateter_urinario">Cateter urinário</option>
+                <option value="endoprote">Endoprótese</option>
+                <option value="marcapasso">Marcapasso</option>
+                <option value="stent">Stent</option>
+                <option value="implante_dental">Implante dentário</option>
+                <option value="outro">Outro dispositivo</option>
+            </select>
+        </div>
+
+        <!-- SELECT 2 DINÂMICO -->
+        <div>
+            <select id="condicao" name="condicao" required>
+                <option value="">Selecione uma condição relacionada</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<!-- TEMPO -->
+<div class="section">
+    <label><b>Há quanto tempo?</b></label>
+
+    <div class="row">
+        <div>
+            <select name="tempo_valor" required>
+                <option value="">Selecione</option>
+                {% for n in range(1,21) %}
+                <option value="{{n}}">{{n}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <select name="tempo_unidade" required>
+                <option value="meses">Meses</option>
+                <option value="anos">Anos</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<!-- CONSULTAS -->
+<div class="section">
+    <label><b>Você já consultou mais de um médico sobre isso?</b></label>
+
+   <div class="radio-group">
+
+    <label class="radio-card">
+        <input type="radio" name="multimedico" value="sim">
+        <span>Sim</span>
+    </label>
+
+    <label class="radio-card">
+        <input type="radio" name="multimedico" value="nao">
+        <span>Não</span>
+    </label>
+
+</div>
+</div>
+
+
+<!-- ANO INÍCIO -->
+<div class="section">
+    <label><b>Ano aproximado de início</b></label>
+    <input type="number" name="ano" placeholder="Ex: 2018">
+</div>
+
+
+<!-- STATUS -->
+<div class="section">
+    <label><b>Status</b></label>
+    <select name="status">
+        <option value="confirmado">Confirmado</option>
+        <option value="investigacao">Em investigação</option>
+        <option value="descartado">Hipótese descartada</option>
+    </select>
+</div>
+
+
+<button type="submit">Continuar</button>
+
+</form>
+</div>
+
+
+<!-- ========= LÓGICA DINÂMICA ========= -->
+<script>
+const condicoesPorDispositivo = {
+
+    pino:[
+        "Dor pós-cirúrgica",
+        "Reação ao material",
+        "Mobilização / soltura do pino",
+        "Infecção local",
+        "Irritação do nervo",
+        "Outro"
+    ],
+
+    placa_ossea:[
+        "Dor local crônica",
+        "Inflamação persistente",
+        "Reação ao metal",
+        "Risco de fratura no local",
+        "Infecção relacionada à placa",
+        "Outro"
+    ],
+
+    protese_articular:[
+        "Dor na prótese",
+        "Instabilidade",
+        "Limitação de movimento",
+        "Desgaste do componente",
+        "Infecção periprotética",
+        "Outro"
+    ],
+
+    cateter_venoso:[
+        "Dor no trajeto do cateter",
+        "Obstrução / trombose",
+        "Infecção / febre",
+        "Extravasamento",
+        "Outro"
+    ],
+
+    cateter_urinario:[
+        "Dor ao urinar",
+        "Infecção urinária recorrente",
+        "Irritação uretral",
+        "Obstrução / retenção",
+        "Outro"
+    ],
+
+    endoprote:[
+        "Dor no local do implante",
+        "Alergia ao material",
+        "Inflamação crônica",
+        "Possível falha estrutural",
+        "Outro"
+    ],
+
+    marcapasso:[
+        "Dor no local do dispositivo",
+        "Sensação de choque / estímulo",
+        "Desconforto no cabo do eletrodo",
+        "Complicação pós-cirúrgica",
+        "Outro"
+    ],
+
+    stent:[
+        "Dor no peito",
+        "Complicação vascular",
+        "Inflamação local",
+        "Reação ao material",
+        "Outro"
+    ],
+
+    implante_dental:[
+        "Dor ao mastigar",
+        "Inflamação gengival",
+        "Falha do implante",
+        "Infecção local",
+        "Outro"
+    ],
+
+    outro:[
+        "Dor relacionada ao dispositivo",
+        "Reação inflamatória",
+        "Suspeita de rejeição",
+        "Outro"
+    ]
+};
+
+
+const selectDispositivo = document.getElementById("dispositivo");
+const selectCondicao = document.getElementById("condicao");
+
+selectDispositivo.addEventListener("change", () => {
+    selectCondicao.innerHTML = `<option value="">Selecione uma condição relacionada</option>`;
+
+    const lista = condicoesPorDispositivo[selectDispositivo.value] || [];
+
+    lista.forEach(item=>{
+        const opt=document.createElement("option");
+        opt.value=item;
+        opt.innerText=item;
+        selectCondicao.appendChild(opt);
+    });
+});
+</script>
+
+</body>
+</html>
+    

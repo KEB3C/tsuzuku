@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Histórico Clínico</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="dashboard-body">
+
+{% include 'components/sidebar.html' %}
+
+<!-- CONTEÚDO -->
+
+<div class="dashboard-container">
+
+    <div class="dashboard-header">
+
+        <div class="dashboard-brand">
+
+            <h1>Histórico Clínico</h1>
+
+            <p>
+                Timeline médica completa do paciente.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="timeline-container">
+
+    {% set ano_atual = '' %}
+
+    {% for resumo in resumos %}
+
+        {% if resumo.ano != ano_atual %}
+
+            <div class="timeline-group-year">
+
+                {{ resumo.ano }}
+
+            </div>
+
+            {% set ano_atual = resumo.ano %}
+
+        {% endif %}
+
+        <div class="timeline-card">
+
+            <div class="timeline-year">
+                {{ resumo.ano }}
+            </div>
+
+            <h3>
+                {{ resumo.condicao }}
+            </h3>
+
+            <p>
+
+                <strong>Dispositivo:</strong>
+                {{ resumo.dispositivo }}
+
+            </p>
+
+            <p>
+
+                <strong>Duração:</strong>
+
+                {{ resumo.tempo_valor }}
+                {{ resumo.tempo_unidade }}
+
+            </p>
+
+            <div class="timeline-status">
+
+                {{ resumo.status }}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<div class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <h2>Tsuzuku</h2>
+
+    </div>
+
+    <div class="sidebar">
+
+    <div class="sidebar-logo">
+
+        <h2>Tsuzuku</h2>
+
+    </div>
+
+    <div class="sidebar-menu">
+
+        <a href="{{ url_for('dashboard') }}"
+           class="{% if pagina_ativa == 'dashboard' %}active{% endif %}">
+            🏠 Dashboard
+
+        </a>
+
+        <a href="{{ url_for('historico') }}"
+           class="{% if pagina_ativa == 'historico' %}active{% endif %}">
+            🩺 Histórico Clínico
+
+        </a>
+
+        <a href="{{ url_for('importar') }}"
+           class="{% if pagina_ativa == 'importar' %}active{% endif %}">
+            📥 Importações Médicas
+
+        </a>
+
+        <a href="{{ url_for('exames') }}"
+   class="{% if pagina_ativa == 'exames' %}active{% endif %}">
+            📄 Exames e Laudos
+</a>
+
+        <a href="#">
+            💊 Medicamentos
+        </a>
+
+        <a href="#">
+            🦾 Dispositivos Médicos
+        </a>
+
+        <a href="#">
+            📅 Agenda Médica
+        </a>
+
+        <a href="#">
+            👨‍⚕️ Profissionais
+        </a>
+
+        <a href="#">
+           ⚙️ Configurações
+        </a>
+
+        <a href="#">
+            🎨 Personalização
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            🚪 Logout
+        </a>
+
+    </div>
+
+</div>
+
+</div>
