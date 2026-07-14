@@ -1,44 +1,32 @@
 # 🩺 Tsuzuku
 
-Sistema web desenvolvido em **Python + Flask** para auxiliar profissionais e pacientes na organização de informações clínicas, criação de resumos médicos e gerenciamento do histórico de atendimentos.
+[![Deploy](https://img.shields.io/badge/Acessar%20Aplicação-Online-4CAF50?style=for-the-badge&logo=render)](https://tsuzuku.onrender.com)
+
+Sistema web desenvolvido em **Python + Flask** para auxiliar pacientes e profissionais da saúde na organização de informações clínicas, geração de resumos médicos e gerenciamento do histórico de atendimentos.
 
 ---
 
-## 📸 Demonstração
+## 🚀 Demonstração Online
 
-### Tela Inicial
+🔗 **Acesse a aplicação:**
 
-![Tela Inicial](screenshots/tela-inicial.png)
+**https://tsuzuku.onrender.com**
 
----
-
-### Login
-
-![Login](screenshots/login.png)
+> **Observação:** Como o projeto está hospedado no plano gratuito do Render, a primeira abertura pode levar alguns segundos.
 
 ---
 
-### Cadastro
+## 🛠 Tecnologias Utilizadas
 
-![Cadastro](screenshots/cadastro.png)
-
----
-
-### Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
----
-
-### Resumo Clínico
-
-![Resumo Clínico](screenshots/resumo-clinico.png)
-
----
-
-### Histórico
-
-![Histórico](screenshots/historico.png)
+![Python](https://img.shields.io/badge/Python-3.13-blue?style=flat-square&logo=python)
+![Flask](https://img.shields.io/badge/Flask-3.1-black?style=flat-square&logo=flask)
+![SQLite](https://img.shields.io/badge/SQLite-Database-blue?style=flat-square&logo=sqlite)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=flat-square&logo=render)
+![Git](https://img.shields.io/badge/Git-Version_Control-F05032?style=flat-square&logo=git)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)
 
 ---
 
@@ -46,102 +34,151 @@ Sistema web desenvolvido em **Python + Flask** para auxiliar profissionais e pac
 
 - 👤 Cadastro de usuários
 - 🔐 Sistema de autenticação (Login)
-- 📊 Dashboard personalizado
+- 📋 Dashboard do usuário
 - 🩺 Criação de resumos clínicos
-- 📂 Histórico de resumos
+- 📚 Histórico de resumos
 - 📄 Upload de documentos
-- 🎨 Interface moderna e responsiva
+- 🧪 Gerenciamento de exames
+- 📱 Interface responsiva
 
 ---
 
-# 🛠 Tecnologias Utilizadas
+# 📸 Demonstração
 
-- Python 3
-- Flask
-- SQLite
-- HTML5
-- CSS3
-- JavaScript
-- Jinja2
+## Tela Inicial
+
+![](screenshots/tela-inicial.png)
 
 ---
 
-# 📁 Estrutura do Projeto
+## Login
 
-```
-Tsuzuku_App_Madu
+![](screenshots/login.png)
+
+---
+
+## Cadastro
+
+![](screenshots/cadastro.png)
+
+---
+
+## Dashboard
+
+![](screenshots/dashboard.png)
+
+---
+
+## Resumo Clínico
+
+![](screenshots/resumo-clinico.png)
+
+---
+
+## Histórico
+
+![](screenshots/historico.png)
+
+---
+
+# 📂 Estrutura do Projeto
+
+```text
+Tsuzuku_App_Madu/
+│
+├── static/
+│   ├── css/
+│   └── img/
+│
+├── templates/
+│
+├── uploads/
+│
+├── screenshots/
 │
 ├── app.py
 ├── database.py
 ├── requirements.txt
+├── Procfile
 ├── README.md
-├── screenshots/
-├── static/
-│   ├── css/
-│   └── img/
-├── templates/
-├── uploads/
-└── tsuzuku.db
+└── .gitignore
 ```
 
 ---
 
-# 🚀 Como executar
+# ⚙️ Como executar localmente
 
-## 1. Clone o repositório
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/KEB3C/tsuzuku.git
 ```
 
-## 2. Entre na pasta
+### 2. Entre na pasta
 
 ```bash
 cd tsuzuku
 ```
 
-## 3. Instale as dependências
+### 3. Instale as dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 4. Execute o projeto
+### 4. Execute a aplicação
 
 ```bash
 python app.py
 ```
 
-## 5. Abra no navegador
+### 5. Acesse
 
 ```
-http://127.0.0.1:5000
+http://localhost:5000
 ```
 
 ---
 
-# 📌 Funcionalidades futuras
+# ☁️ Deploy
 
-- 🤖 Integração com Inteligência Artificial para geração automática de resumos clínicos.
-- 📋 Cadastro completo de pacientes.
-- 📅 Agenda de consultas.
-- 📑 Exportação de relatórios em PDF.
-- 📈 Dashboard com estatísticas.
-- ☁️ Hospedagem em nuvem.
+O projeto está publicado utilizando:
+
+- Render
+- Gunicorn
+
+Aplicação online:
+
+**https://tsuzuku.onrender.com**
 
 ---
 
-# 👨‍💻 Desenvolvedor
+# 🚧 Próximas Funcionalidades
+
+- [ ] Exportação de resumos em PDF
+- [ ] Banco de dados PostgreSQL
+- [ ] Integração com IA para geração automática de resumos
+- [ ] Dashboard com estatísticas
+- [ ] Perfil do usuário
+- [ ] Recuperação de senha
+- [ ] Melhorias na experiência do usuário (UX/UI)
+
+---
+
+# 👨‍💻 Autor
 
 **Arthur Farias**
 
-Desenvolvido como projeto de estudo, com foco em desenvolvimento web utilizando Flask, organização de banco de dados e construção de interfaces para aplicações da área da saúde.
-
 GitHub:
+
 https://github.com/KEB3C
+
+LinkedIn:
+
+(Seu LinkedIn)
 
 ---
 
-## ⭐ Se este projeto foi interessante para você
+# 📄 Licença
 
-Considere deixar uma **Star** ⭐ no repositório.
+Este projeto foi desenvolvido para fins acadêmicos e de portfólio.
