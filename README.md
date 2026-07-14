@@ -175,7 +175,7 @@ https://github.com/KEB3C
 
 LinkedIn:
 
-(Seu LinkedIn)
+[(Seu LinkedIn)](https://www.linkedin.com/in/arthur-farias-dev/)
 
 ---
 
