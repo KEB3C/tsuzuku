@@ -1,129 +1,147 @@
 # 🩺 Tsuzuku
 
-Sistema web desenvolvido em **Python** utilizando **Flask**, criado para auxiliar pacientes e profissionais da saúde na organização de informações clínicas de forma simples, segura e intuitiva.
-
----
-
-## 📖 Sobre o projeto
-
-O **Tsuzuku** nasceu com o objetivo de centralizar informações médicas em um único lugar, facilitando o acompanhamento da saúde do paciente.
-
-A aplicação permite o cadastro de usuários, autenticação por login, criação e gerenciamento de resumos clínicos, histórico de informações e organização de documentos, oferecendo uma interface intuitiva para facilitar o acesso aos dados.
-
----
-
-## ✨ Funcionalidades
-
-- ✅ Cadastro de usuários
-- ✅ Login com autenticação
-- ✅ Dashboard personalizado
-- ✅ Criação de resumos clínicos
-- ✅ Histórico de resumos
-- ✅ Upload de documentos
-- ✅ Interface responsiva
-- ✅ Organização de informações clínicas
-
----
-
-## 🛠 Tecnologias utilizadas
-
-- Python
-- Flask
-- SQLite
-- HTML5
-- CSS3
-- JavaScript
-
----
-
-## 📂 Estrutura do projeto
-
-```
-Tsuzuku/
-│
-├── app.py
-├── database.py
-├── static/
-├── templates/
-├── uploads/
-├── test_app.py
-└── .gitignore
-```
-
----
-
-## 🚀 Como executar
-
-### 1. Clone o repositório
-
-```bash
-git clone https://github.com/KEB3C/tsuzuku.git
-```
-
-### 2. Entre na pasta do projeto
-
-```bash
-cd tsuzuku
-```
-
-### 3. Instale as dependências
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Execute a aplicação
-
-```bash
-python app.py
-```
-
-### 5. Acesse no navegador
-
-```
-http://localhost:5000
-```
+Sistema web desenvolvido em **Python + Flask** para auxiliar profissionais e pacientes na organização de informações clínicas, criação de resumos médicos e gerenciamento do histórico de atendimentos.
 
 ---
 
 ## 📸 Demonstração
 
-Em breve serão adicionadas capturas de tela e uma versão online da aplicação.
+### Tela Inicial
+
+![Tela Inicial](screenshots/tela-inicial.png)
 
 ---
 
-## 💡 Objetivos do projeto
+### Login
 
-Este projeto foi desenvolvido com foco em aprendizado e prática de desenvolvimento web utilizando Flask, aplicando conceitos como:
-
-- Arquitetura de aplicações web
-- CRUD
-- Autenticação de usuários
-- Banco de dados SQLite
-- Organização de templates
-- Estruturação de projetos Flask
-- Versionamento com Git e GitHub
+![Login](screenshots/login.png)
 
 ---
 
-## 🚀 Próximas melhorias
+### Cadastro
 
-- Implementação de perfis de usuários
-- Melhorias na interface
-- Dashboard com estatísticas
-- Exportação de resumos em PDF
-- Hospedagem online da aplicação
-- Melhorias na segurança e autenticação
+![Cadastro](screenshots/cadastro.png)
 
 ---
 
-## 👨‍💻 Autor
+### Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+### Resumo Clínico
+
+![Resumo Clínico](screenshots/resumo-clinico.png)
+
+---
+
+### Histórico
+
+![Histórico](screenshots/historico.png)
+
+---
+
+# ✨ Funcionalidades
+
+- 👤 Cadastro de usuários
+- 🔐 Sistema de autenticação (Login)
+- 📊 Dashboard personalizado
+- 🩺 Criação de resumos clínicos
+- 📂 Histórico de resumos
+- 📄 Upload de documentos
+- 🎨 Interface moderna e responsiva
+
+---
+
+# 🛠 Tecnologias Utilizadas
+
+- Python 3
+- Flask
+- SQLite
+- HTML5
+- CSS3
+- JavaScript
+- Jinja2
+
+---
+
+# 📁 Estrutura do Projeto
+
+```
+Tsuzuku_App_Madu
+│
+├── app.py
+├── database.py
+├── requirements.txt
+├── README.md
+├── screenshots/
+├── static/
+│   ├── css/
+│   └── img/
+├── templates/
+├── uploads/
+└── tsuzuku.db
+```
+
+---
+
+# 🚀 Como executar
+
+## 1. Clone o repositório
+
+```bash
+git clone https://github.com/KEB3C/tsuzuku.git
+```
+
+## 2. Entre na pasta
+
+```bash
+cd tsuzuku
+```
+
+## 3. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+## 4. Execute o projeto
+
+```bash
+python app.py
+```
+
+## 5. Abra no navegador
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+# 📌 Funcionalidades futuras
+
+- 🤖 Integração com Inteligência Artificial para geração automática de resumos clínicos.
+- 📋 Cadastro completo de pacientes.
+- 📅 Agenda de consultas.
+- 📑 Exportação de relatórios em PDF.
+- 📈 Dashboard com estatísticas.
+- ☁️ Hospedagem em nuvem.
+
+---
+
+# 👨‍💻 Desenvolvedor
 
 **Arthur Farias**
 
-Estudante de Ciência da Computação, desenvolvendo projetos para aprimorar conhecimentos em desenvolvimento web, Python e tecnologias voltadas ao desenvolvimento de software.
+Desenvolvido como projeto de estudo, com foco em desenvolvimento web utilizando Flask, organização de banco de dados e construção de interfaces para aplicações da área da saúde.
 
 GitHub:
 https://github.com/KEB3C
 
 ---
+
+## ⭐ Se este projeto foi interessante para você
+
+Considere deixar uma **Star** ⭐ no repositório.
